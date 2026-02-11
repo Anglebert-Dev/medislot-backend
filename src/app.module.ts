@@ -65,6 +65,8 @@ import { AdminInitService } from './common/services/admin-init.service';
   ],
 })
 export class AppModule implements NestModule {
+  constructor(private readonly adminInit: AdminInitService) {}
+
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(RequestIdMiddleware, LoggingMiddleware).forRoutes('*');
   }
